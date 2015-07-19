@@ -28,7 +28,7 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 ## Loading and preprocessing the data.
 
-1- Load the data:
+- Load the data:
 
 
 ```r
@@ -46,7 +46,7 @@ dataNA <- read.csv("./activity.csv")
 ```
 
 
-2- Omit the NA values in the data:
+- Omit the NA values in the data:
 
 
 ```r
@@ -56,7 +56,7 @@ data <- na.omit(dataNA)
 
 ## What is mean total number of steps taken per day?
 
-1- Total number of steps taken per day: 
+- Total number of steps taken per day: 
 
 
 ```r
@@ -77,7 +77,7 @@ head(cdata)
 ## 6 2012-10-07 11015
 ```
 
-2- Histogram of the total number of steps taken each day.
+- Histogram of the total number of steps taken each day.
 
 
 ```r
@@ -88,7 +88,7 @@ qplot(Steps, data=cdata, geom="histogram", main = "Total number of steps taken e
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
-3- Mean and median of the total number of steps taken per day.
+- Mean and median of the total number of steps taken per day.
 
 
 ```r
@@ -99,7 +99,7 @@ The mean of the total number of steps taken per day is 1.0766189 &times; 10<sup>
 
 ## What is the average daily activity pattern?
 
-1- Time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
+- Time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
 
 
 ```r
@@ -113,7 +113,7 @@ qplot(interval, Steps, data=TimeSeries, geom = "line", main = "Mean of Steps per
 
 ![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 
-2- 5-minute Interval, on average across all the days in the dataset, which contains the maximum number of steps:
+- 5-minute Interval, on average across all the days in the dataset, which contains the maximum number of steps:
 
 
 ```r
@@ -128,20 +128,20 @@ Interval : 835
 
 ## Imputing missing values
 
-1- Total number of missing values in the dataset.
+- Total number of missing values in the dataset.
 
 ```r
 sum = sum(is.na(dataNA$steps))
 ```
 The total number of missing values is 2304
 
-2- Strategy to filling in all of the missing values in the dataset: 
+- Strategy to filling in all of the missing values in the dataset: 
 
-- Get the position row of each NA (NAindex), 
-- use this index to locate the media 5-min Interval that corresponds to the interval with the missing value and,
-- replace the missing values in the interval with the average number of steps of the 5-min Interval calculated from the dataframe "TimeSeries" that was built above.
+  - Get the position row of each NA (NAindex), 
+  - use this index to locate the media 5-min Interval that corresponds to the interval with the missing value and,
+  - replace the missing values in the interval with the average number of steps of the 5-min Interval calculated from the dataframe "TimeSeries" that was built above.
 
-3- Create a new dataset that is equal to the original dataset but with the missing data filled in.
+- Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 
 ```r
@@ -161,7 +161,7 @@ for (x in 1:2304){
 }
 ```
 
-4- Histogram of the total number of steps taken each day
+- Histogram of the total number of steps taken each day
 
 
 ```r
@@ -180,7 +180,7 @@ qplot(Steps, data= totaldata, facets= ~Type, geom="histogram", fill = Type, main
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
 
-5- Calculate and report the mean and median total number of steps taken per day.
+- Calculate and report the mean and median total number of steps taken per day.
 
 
 ```r
@@ -194,7 +194,7 @@ The mean of the total number of steps taken per day is 1.0766189 &times; 10<sup>
 The mean differs from the estimates from the first part of the assignment in 0% and the median in 0.0110421%.
 
 
-6- Impact of imputing missing data on the estimates of the total daily number of steps.
+- Impact of imputing missing data on the estimates of the total daily number of steps.
 
 
 ```r
@@ -207,7 +207,7 @@ The total daily number of steps calculated after imputing the missing data is 6.
 
 ## Are there differences in activity patterns between weekdays and weekends
 
-1- Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
+- Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
 
 ```r
@@ -237,7 +237,7 @@ datafilled[,4] = "Weekday"
 datafilled[WeekendIndex,4] = "Weekend"
 ```
 
-2- Panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
+- Panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
 
 
 ```r
