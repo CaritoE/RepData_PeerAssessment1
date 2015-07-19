@@ -125,10 +125,10 @@ NAindex = which(is.na(dataNA$steps))
 datafilled = dataNA
 
 for (x in 1:2304){
-y = NAindex[x]
-Interval = datafilled[y, 3]
-Intervalindex = which (TimeSeries$interval == Interval) 
-datafilled[y,1] = TimeSeries[Intervalindex,2]
+    y = NAindex[x]
+    Interval = datafilled[y, 3]
+    Intervalindex = which (TimeSeries$interval == Interval) 
+    datafilled[y,1] = TimeSeries[Intervalindex,2]
 }
 
 ```
